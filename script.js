@@ -89,6 +89,13 @@ let opcion = parseInt(prompt(`Bienvenido a IWNL Shop ${nombreComprador}, estos s
 let itemCarrito = ""
 let precioCarrito = 0;
 
+// Funcion para el acortar el codigo del carrito
+function agrCarrito (producto, precio){
+    alert(`Se añadio ${producto} al carrito.`)
+    itemCarrito += `${producto} x1 \n`
+    precioCarrito += precio
+}
+
 // WHILE Y SWITCH (Mostrar el catalogo y poder añadir productos al carrito)
 while (opcion != 0) {
     switch (opcion) {
@@ -112,25 +119,14 @@ while (opcion != 0) {
 
 alert (`En el Carrito usted tiene ${itemCarrito} con un valor total de ${precioCarrito}`)
 
-
-// Funcion para el acortar el codigo del carrito
-function agrCarrito (producto, precio){
-    alert(`Se añadio ${producto} al carrito.`)
-    itemCarrito += `${producto} x1 \n`
-    precioCarrito += precio
-}
-
 // SI EL PAGO ES EN EFECTIVO SE HARA DESCUENTO 
-
-/* function pagoEfectivo (monto) {monto * 0,85} */
-
 if (precioCarrito >= 7000){
-    let efectivo = prompt(`${nombreComprador} el total de su compra es de ${precioCarrito}, desea pagar con efectivo?`).toLowerCase()
+    let efectivo = prompt(`${nombreComprador} el total de su compra es de ${precioCarrito}, desea pagar con efectivo?, recuerde que pagando en efectivo accede a un 15% de descuento`).toLowerCase()
     if(efectivo == "si" || efectivo == "sí"){
         let efectivo = precioCarrito * 0.85; 
         alert(`El total te quedaria en ${efectivo}`)
     }else{
-        alert(`${nombreComprador} el total de su compra es de ${precioCarrito}`)
+        alert(`Okey ${nombreComprador} el total de su compra es de ${precioCarrito}`)
     }
 }
 
