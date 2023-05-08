@@ -44,10 +44,10 @@ if (notaPrimera >= 4){
 
 // ACTIVIDAD CLASE 3 
 
-let sillasTotales = 20
+/* let sillasTotales = 20
 let mesasTotales = 4
 let sillasReservadas = 0
-
+ */
 
 /* for (let i = 0; i < 4; i++) {
     let nombreUser = prompt("A nombre de quien es la reserva").toLowerCase()
@@ -80,24 +80,61 @@ do {
 }while (nombreUser != "juan")
 alert("No se admiten Juanes") */
 
-let opcion = parseInt(prompt("Elige una opcion 1. Ganar, 2.Empatar o 3.Perder. 0.Salir"))
 
+
+let theStock = "1. Remera IWNL \n 2. Short IWNL \n 3. Medias Mid Low \n 4. Piluso IWNL Negro \n 0. Ir al Carrito"
+let nombreComprador = prompt("Ingrese su nombre")
+let opcion = parseInt(prompt(`Bienvenido a IWNL Shop ${nombreComprador}, estos son nuestos productos \n ${theStock}`))
+
+let itemCarrito = ""
+let precioCarrito = 0;
+
+// WHILE Y SWITCH (Mostrar el catalogo y poder añadir productos al carrito)
 while (opcion != 0) {
     switch (opcion) {
         case 1:
-            alert("Tu equipo a Sumado 3 puntos!")
+            agrCarrito ("Remera IWNL", 4200)
             break;
         case 2:
-            alert("Tu equipo a sumado 1 punto.")
+            agrCarrito ("Short IWNL", 2000)
             break;
         case 3:
-            alert("Tu equipo a no a sumado puntos.")
+            agrCarrito ("Medias Mid Low", 300)
+            break;
+        case 4:
+            agrCarrito ("Piluso Negro", 1200)
             break;
         default:
             alert("Ingresa una opcion valida")
     }
-    opcion = parseInt(prompt("Elige una opcion 1. Ganar, 2.Empatar o 3.Perder. 0.Salir"))
+    opcion = parseInt(prompt(`${nombreComprador},quiere sumar algun producto?, estos son nuestos productos \n ${theStock}`))
 }
+
+alert (`En el Carrito usted tiene ${itemCarrito} con un valor total de ${precioCarrito}`)
+
+
+// Funcion para el acortar el codigo del carrito
+function agrCarrito (producto, precio){
+    alert(`Se añadio ${producto} al carrito.`)
+    itemCarrito += `${producto} x1 \n`
+    precioCarrito += precio
+}
+
+// SI EL PAGO ES EN EFECTIVO SE HARA DESCUENTO 
+
+/* function pagoEfectivo (monto) {monto * 0,85} */
+
+if (precioCarrito >= 7000){
+    let efectivo = prompt(`${nombreComprador} el total de su compra es de ${precioCarrito}, desea pagar con efectivo?`).toLowerCase()
+    if(efectivo == "si" || efectivo == "sí"){
+        let efectivo = precioCarrito * 0.85; 
+        alert(`El total te quedaria en ${efectivo}`)
+    }else{
+        alert(`${nombreComprador} el total de su compra es de ${precioCarrito}`)
+    }
+}
+
+
 
 
 
