@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Aprendiendo JS</title>
 </head>
 <body style="background-color: rgb(129, 123, 37);">
@@ -11,9 +12,29 @@
         <h1>Pagina Utilizando JavaScript :D</h1>
     </header>
 
-
-
-
+    <div id="acciones">
+        <input type="text" id="nombreArticulo" placeholder="Nombre del artículo">
+        <input type="number" id="cantidadArticulo" placeholder="Cantidad del artículo">
+        <input type="number" id="precioArticulo" placeholder="Precio del artículo">
+        <button onclick="agregarArticulo()">Agregar artículo</button>
+        <button onclick="finalizarCompra()">Finalizar compra</button>
+    </div>
+    <div id="carrito">
+        <h2>Lista de Compra</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio por Unidad</th>
+                    <th>Precio Total</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="listaCompra"></tbody>
+        </table>
+        <p id="precioTotal"></p>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

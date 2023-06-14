@@ -1,0 +1,25 @@
+#carrito{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 70%;
+    margin: 0px 15%;
+}
+#acciones{
+    background-color: rgb(48, 48, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.precio-alto {
+    background-color: #FFC799; 
+}
+
+.precio-medio {
+    background-color: #FFF79A; 
+}
