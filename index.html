@@ -5,19 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.css">
     <title>Aprendiendo JS</title>
 </head>
-<body style="background-color: rgb(129, 123, 37);">
+<body>
     <header>
-        <h1>Pagina Utilizando JavaScript :D</h1>
+        <h1>Tu Carrito del Super</h1>
     </header>
-
+<div class="contenedor-mayor">
     <div id="acciones">
+        <label for="nombreArticulo">Articulo</label>
         <input type="text" id="nombreArticulo" placeholder="Nombre del artículo">
+        <label for="cantidadArticulo">Cantidad</label>
         <input type="number" id="cantidadArticulo" placeholder="Cantidad del artículo">
+        <label for="precioArticulo">Precio del Articulo</label>
         <input type="number" id="precioArticulo" placeholder="Precio del artículo">
         <button onclick="agregarArticulo()">Agregar artículo</button>
         <button onclick="finalizarCompra()">Finalizar compra</button>
+        <div>
+            <input type="radio" name="metodoPago" value="efectivo" id="efectivo" checked>
+            <label for="efectivo">Efectivo</label>
+        </div>
+        <div>
+            <input type="radio" name="metodoPago" value="tarjeta" id="tarjeta">
+            <label for="tarjeta">Tarjeta</label>
+        </div>
+        
+        <div id="cuotasOptions" style="display: none;">
+            <select id="cuotasSelect">
+                <option value="1" selected>1 cuota</option>
+                <option value="3">3 cuotas</option>
+                <option value="6">6 cuotas</option>
+            </select>
+        </div>
     </div>
     <div id="carrito">
         <h2>Lista de Compra</h2>
@@ -34,7 +55,12 @@
             <tbody id="listaCompra"></tbody>
         </table>
         <p id="precioTotal"></p>
+        <p id="mensajeFinal"></p>
     </div>
+</div>
+<div id="precioDolarBlue"><h4>Dolar Hoy:</h4></div>
     <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
 </body>
 </html>

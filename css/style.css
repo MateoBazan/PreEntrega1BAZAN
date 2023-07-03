@@ -1,25 +1,36 @@
-#carrito{
-    background-color: antiquewhite;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 40%;
-    width: 70%;
-    margin: 0px 15%;
-}
-#acciones{
-    background-color: rgb(48, 48, 245);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-.precio-alto {
-    background-color: #FFC799; 
+body{
+    background: url(../img/fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.precio-medio {
-    background-color: #FFF79A; 
+#carrito{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 50%;
+}
+#acciones{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 50%;
+    padding-left: 20px;
+}
+
+.contenedor-mayor{
+    display: flex;
+    margin: 10px;
+    height: 85vh;
+}
+
+#precioDolarBlue{
+    background-color: rgb(102, 145, 182);
+    padding: 5px;
+    display: flex;
+    width: 20%;
+    align-content: center;
 }
