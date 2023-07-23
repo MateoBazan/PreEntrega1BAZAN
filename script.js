@@ -3,6 +3,12 @@ let listaCompra = [];
 // Variable para almacenar el precio total
 let precioTotal = 0;
 
+const agregarArticuloBtn = document.getElementById("agregarArticuloBtn");
+agregarArticuloBtn.addEventListener("click", () => {
+    // Llamada a la función agregarArticulo() cuando se haga clic en el botón
+    agregarArticulo();
+});
+
 // Función para reiniciar la compra
 function reiniciarCompra() {
     // Reiniciar el arreglo y el precio total
@@ -39,6 +45,8 @@ function reiniciarCompra() {
 
     // Limpiar el Local Storage
     localStorage.removeItem("listaCompra");
+    // Reiniciar la variable compraFinalizada a false
+    compraFinalizada = false;
 }
 
 // Función para Agregar al Carrito
@@ -47,6 +55,20 @@ function agregarArticulo() {
     const nombreArticulo = document.getElementById("nombreArticulo").value;
     const cantidadArticulo = parseInt(document.getElementById("cantidadArticulo").value);
     const precioArticulo = parseInt(document.getElementById("precioArticulo").value);
+    // Verificar si la compra ya ha sido finalizada
+    if (compraFinalizada) {
+        return;
+    }
+ // Validar que los campos no estén vacíos y sean números válidos
+    if (!nombreArticulo || isNaN(cantidadArticulo) || isNaN(precioArticulo)) {
+        // Mostrar mensaje de error con SweetAlert (puedes modificarlo según tu preferencia)
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Por favor, completa todos los campos correctamente.",
+        });
+        return;
+    }
 
     const articulo = {
         nombre: nombreArticulo,
@@ -126,11 +148,34 @@ function eliminarArticulo(row, precio) {
     guardarProgresoEnLocalStorage();
 }
 
+// Variable para almacenar el botón de confirmar
+let confirmarButton = null;
+// Variable para verificar si la compra ya ha sido finalizada
+let compraFinalizada = false;
+// Agregar el listener para el botón "Finalizar compra"
+const finalizarCompraBtn = document.getElementById("finalizarCompraBtn");
+finalizarCompraBtn.addEventListener("click", () => {
+    // Llamada a la función finalizarCompra() cuando se haga clic en el botón
+    finalizarCompra();
+});
+
 function finalizarCompra() {
+    // Evitar finalizar la compra si ya ha sido finalizada
+    if (compraFinalizada) {
+        return;
+    }
+
     // Crear inputs para el método de pago y la cantidad de cuotas
     const metodoPagoInputs = document.getElementsByName("metodoPago");
     const cuotasSelect = document.getElementById("cuotasSelect");
-    const confirmarButton = document.createElement("button");
+
+    // Si el botón de confirmar ya está en el DOM, no es necesario crearlo nuevamente
+    if (confirmarButton) {
+        return;
+    }
+
+    // Crear el botón "Confirmar"
+    confirmarButton = document.createElement("button");
     confirmarButton.textContent = "Confirmar";
 
     // Función para procesar la compra al hacer clic en el botón
@@ -192,9 +237,11 @@ function finalizarCompra() {
         });
     });
 
-    // Cargar el progreso almacenado en el Local Storage
-    cargarProgresoDesdeLocalStorage();
+    // Marcar la compra como finalizada para evitar agregar más artículos al carrito
+    compraFinalizada = true;
 }
+
+
 
 // Obtener el precio del dólar blue desde la API
 function obtenerPrecioDolarBlue() {
